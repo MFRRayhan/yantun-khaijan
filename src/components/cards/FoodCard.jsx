@@ -1,3 +1,4 @@
+import CartBtn from "@/app/buttons/CartBtn";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,7 +31,7 @@ export default function FoodCard({ food }) {
 
         {/* Buttons */}
         <div className="flex gap-3 mt-auto">
-          <button className="btn flex-1">Add to Cart</button>
+          <CartBtn></CartBtn>
 
           <Link href={`/foods/${id}`} className="btn flex-1 text-center">
             View Details

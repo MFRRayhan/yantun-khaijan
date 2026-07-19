@@ -1,5 +1,21 @@
+"use client";
+import { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+
 export default function ReviewCard({ review }) {
   const { user, email, photo, rating, review: comment, likes, date } = review;
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(likes.length);
+
+  const handleLike = () => {
+    if (isLiked) {
+      setLikeCount((count) => count - 1);
+    } else {
+      setLikeCount((count) => count + 1);
+    }
+
+    setIsLiked((prev) => !prev);
+  };
 
   return (
     <div className="flex h-full flex-col rounded-2xl border border-stone-700 bg-stone-800 p-6 transition duration-300 hover:border-orange-500">
@@ -31,7 +47,14 @@ export default function ReviewCard({ review }) {
 
       {/* Footer */}
       <div className="mt-6 flex items-center justify-between border-t border-stone-700 pt-4 text-sm text-stone-400">
-        <span>❤️ {likes.length} Likes</span>
+        <button onClick={handleLike} className="flex items-center gap-1">
+          {isLiked ? (
+            <FaHeart className="cursor-pointer size-5 fill-red-500" />
+          ) : (
+            <FaRegHeart className="cursor-pointer size-5" />
+          )}{" "}
+          {likeCount} Likes
+        </button>
 
         <span>
           {new Date(date).toLocaleDateString("en-GB", {

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { resolve } from "styled-jsx/css";
 
 const getSingleFood = async (id) => {
   const res = await fetch(
