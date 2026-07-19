@@ -1,3 +1,19 @@
+"use client";
+import { useState } from "react";
+
 export default function CartBtn() {
-  return <button className="btn flex-1">Add to Cart</button>;
+  const [inCart, setInCart] = useState(false);
+
+  const handleCart = () => {
+    setInCart((prev) => !prev);
+  };
+
+  return (
+    <button
+      onClick={handleCart}
+      className={`btn flex-1 ${inCart && "bg-green-600! text-white!"}`}
+    >
+      {inCart ? "Added" : "Add to cart"}
+    </button>
+  );
 }
