@@ -13,6 +13,12 @@ const getFoods = async (search) => {
   return data.foods || [];
 };
 
+export const metadata = {
+  title: "All Foods",
+  description:
+    "Discover delicious recipes, explore authentic flavors, and enjoy your favorite meals.",
+};
+
 export default async function Foods({ searchParams }) {
   const { search = "" } = await searchParams;
   const foods = await getFoods(search);

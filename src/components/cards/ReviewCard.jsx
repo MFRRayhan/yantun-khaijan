@@ -53,7 +53,7 @@ export default function ReviewCard({ review }) {
           ) : (
             <FaRegHeart className="cursor-pointer size-5" />
           )}{" "}
-          {likeCount} Likes
+          {likeCount} {likeCount === 1 ? "Like" : "Likes"}
         </button>
 
         <span>

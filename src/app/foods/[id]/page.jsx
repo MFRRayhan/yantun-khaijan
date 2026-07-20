@@ -5,6 +5,34 @@ export const generateStaticParams = () => {
   return [{ id: "52874" }, { id: "53071" }, { id: "52878" }];
 };
 
+export const generateMetadata = async ({ params }) => {
+  const { id } = await params;
+  const res = await fetch(
+    `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
+    {
+      cache: "no-store",
+    },
+  );
+
+  const { details = {} } = await res.json();
+
+  return {
+    title: details.title,
+    generator: "Next.js",
+    applicationName: "Yantun Khaijan",
+    referrer: "origin-when-cross-origin",
+    keywords: ["Next.js", "React", "JavaScript"],
+    authors: [{ name: "Rayhan" }],
+    creator: "MFR Rayhan",
+    publisher: "MFR Rayhan",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+  };
+};
+
 const getSingleFood = async (id) => {
   const res = await fetch(
     `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,

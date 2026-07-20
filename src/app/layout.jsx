@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Yantun Khaijan",
+  title: {
+    default: "Yantun Khaijan",
+    template: "%s | Yantun Khaijan",
+  },
   description:
     "Discover delicious recipes, explore authentic flavors, and enjoy your favorite meals.",
 };
