@@ -1,15 +1,22 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function InputSearch() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const handleCartForm = (e) => {
     e.preventDefault();
     const search = e.target.search.value;
-    console.log(search);
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set("search", search);
+    router.push(`?${newParams.toString()}`);
   };
 
   return (
     <>
-      <form onSubmit={handleCartForm} className="flex gap-2">
+      <form onSubmit={handleCartForm} className="flex gap-2 w-full max-w-3xl">
         <input
           name="search"
           type="search"
