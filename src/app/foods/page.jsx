@@ -1,5 +1,5 @@
 import FoodCard from "@/components/cards/FoodCard";
-import { resolve } from "styled-jsx/css";
+import CartItems from "@/components/CartItems";
 
 const getFoods = async () => {
   const res = await fetch(
@@ -22,10 +22,18 @@ export default async function Foods() {
         Total <span className="text-amber-300">{foods.length}</span> Foods Found
       </h2>
 
-      <div className="my-10 grid grid-cols-4 gap-6">
-        {foods.map((food) => (
-          <FoodCard key={food.id} food={food} />
-        ))}
+      <div className="flex gap-6">
+        <div className="flex-1 my-10 grid grid-cols-3 gap-6">
+          {foods.map((food) => (
+            <FoodCard key={food.id} food={food} />
+          ))}
+        </div>
+
+        <div className="w-70 border-2 rounded-2xl p-5">
+          <h2 className="text-2xl">Cart Items</h2>
+          <div className="divider"></div>
+          <CartItems />
+        </div>
       </div>
     </>
   );

@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import CartProvider from "@/context/CartProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,9 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Header />
-        <main className="container mx-auto py-10">{children}</main>
+        <main className="container mx-auto py-10">
+          <CartProvider>{children}</CartProvider>
+        </main>
       </body>
     </html>
   );
