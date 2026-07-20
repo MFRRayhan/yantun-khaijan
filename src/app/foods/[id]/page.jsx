@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const generateStaticParams = () => {
+  return [{ id: "52874" }, { id: "53071" }, { id: "52878" }];
+};
+
 const getSingleFood = async (id) => {
   const res = await fetch(
     `https://taxi-kitchen-api.vercel.app/api/v1/foods/${id}`,
