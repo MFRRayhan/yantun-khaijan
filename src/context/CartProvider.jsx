@@ -13,7 +13,7 @@ export default function CartProvider({ children }) {
 
   const cartInfo = {
     cart,
-    setCart,
+    addToCart,
   };
 
   return (
