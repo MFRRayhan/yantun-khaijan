@@ -35,6 +35,10 @@ h6 {
   @apply font-bold;
 }
 
+.container {
+  @apply mx-auto;
+}
+
 .btn {
   @apply bg-gray-200 rounded-xl font-bold hover:shadow-2xl hover:shadow-white hover:transform-[scale(1.05)] duration-200 text-black cursor-pointer active:bg-white active:transform-[scale(1.01)] active:shadow px-4 py-3 relative z-10;
 }

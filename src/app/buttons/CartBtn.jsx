@@ -8,13 +8,14 @@ export default function CartBtn({ food }) {
 
   const handleCart = () => {
     addToCart(food);
-    setInCart(true);
+    setInCart((prev) => !prev);
   };
 
   return (
     <button
       onClick={handleCart}
-      className={`btn flex-1 ${inCart && "bg-green-600! text-white!"}`}
+      disabled={inCart}
+      className={`btn flex-1 ${inCart && "bg-green-600! text-white! disabled:cursor-not-allowed"}`}
     >
       {inCart ? "Added" : "Add to cart"}
     </button>
