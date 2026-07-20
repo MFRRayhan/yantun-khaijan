@@ -1,6 +1,7 @@
 "use client";
 import { CartContext } from "@/context/CartProvider";
 import { useContext, useState } from "react";
+import styles from "./CartBtn.module.css";
 
 export default function CartBtn({ food }) {
   const [inCart, setInCart] = useState(false);
@@ -15,7 +16,7 @@ export default function CartBtn({ food }) {
     <button
       onClick={handleCart}
       disabled={inCart}
-      className={`btn flex-1 ${inCart && "bg-green-600! text-white! disabled:cursor-not-allowed"}`}
+      className={`btn flex-1 ${inCart ? `${styles.btn} disabled:cursor-not-allowed` : ""}`}
     >
       {inCart ? "Added" : "Add to cart"}
     </button>
