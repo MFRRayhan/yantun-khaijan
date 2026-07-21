@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
@@ -6,7 +7,14 @@ export default function Header() {
       <div className="container">
         <div className="flex items-center justify-between">
           <Link href={"/"}>
-            <img src="/logo.png" alt="yantun khaijan" className="w-40" />
+            {/* <img src="/logo.png" alt="yantun khaijan" className="w-40" /> */}
+            <Image
+              width={120}
+              height={30}
+              src="/logo.png"
+              alt="yantun khaijan"
+              className="w-40"
+            />
           </Link>
 
           <div className="space-x-2">
