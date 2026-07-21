@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
@@ -21,10 +22,18 @@ export default function ReviewCard({ review }) {
     <div className="flex h-full flex-col rounded-2xl border border-stone-700 bg-stone-800 p-6 transition duration-300 hover:border-orange-500">
       {/* User */}
       <div className="flex items-center gap-4">
-        <img
+        {/* <img
           src={photo}
           alt={user}
           className="h-14 w-14 rounded-full object-cover"
+        /> */}
+
+        <Image
+          src={photo}
+          alt={user}
+          className="h-14 w-14 rounded-full object-cover"
+          width={500}
+          height={300}
         />
 
         <div>
