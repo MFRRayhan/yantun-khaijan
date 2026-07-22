@@ -11,7 +11,7 @@ export function proxy(request) {
     });
   }
 
-  return NextResponse.redirect(new URL("/api", request.url));
+  return NextResponse.next();
 }
 
 // Alternatively, you can use a default export:
