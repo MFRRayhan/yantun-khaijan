@@ -14,6 +14,7 @@ export default function Header() {
               src="/logo.png"
               alt="yantun khaijan"
               className="w-40"
+              loading="eager"
             />
           </Link>
 
