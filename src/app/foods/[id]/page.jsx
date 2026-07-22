@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const generateStaticParams = () => {
   return [{ id: "52874" }, { id: "53071" }, { id: "52878" }];
@@ -50,7 +51,9 @@ export default async function FoodDetails({ params }) {
   const { id } = await params;
   const food = await getSingleFood(id);
 
-  if (!food) return <h2>food not found...</h2>;
+  if (!food.title) {
+    return redirect("/foods");
+  }
 
   const { title, foodImg, category, area, price, video } = food;
 
@@ -85,9 +88,9 @@ export default async function FoodDetails({ params }) {
           <h2 className="mt-5 text-4xl font-bold text-orange-500">${price}</h2>
 
           <p className="mt-6 leading-8 text-stone-300">
-            Enjoy this delicious {category.toLowerCase()} recipe inspired by{" "}
-            {area} cuisine. Fresh ingredients, rich flavor, and an unforgettable
-            taste make this dish a perfect choice for any meal.
+            Enjoy this delicious {category} recipe inspired by {area} cuisine.
+            Fresh ingredients, rich flavor, and an unforgettable taste make this
+            dish a perfect choice for any meal.
           </p>
 
           <div className="mt-10 flex flex-wrap gap-4">

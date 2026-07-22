@@ -1,8 +1,10 @@
 "use client";
 
+import { redirect, useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
 export default function FeedbackForm() {
+  const router = useRouter();
   const handleFeedback = async (e) => {
     e.preventDefault();
     const message = e.target.message.value;
@@ -29,6 +31,7 @@ export default function FeedbackForm() {
         showConfirmButton: false,
         timer: 2000,
       });
+      router.push("/feedbacks");
     }
 
     e.target.reset();

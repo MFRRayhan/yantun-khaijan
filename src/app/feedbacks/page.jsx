@@ -6,7 +6,10 @@ export const metadata = {
 };
 
 const getFeedbacks = async () => {
-  const res = await fetch("http://localhost:3000/api/feedbacks");
+  const res = await fetch("http://localhost:3000/api/feedbacks", {
+    cache: "force-cache",
+    next: { revalidate: 60 },
+  });
   const data = await res.json();
 
   return data;

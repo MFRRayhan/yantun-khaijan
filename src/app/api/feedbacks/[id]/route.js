@@ -1,5 +1,6 @@
 import { connect } from "@/app/lib/dbConnect";
 import { ObjectId } from "mongodb";
+import { revalidatePath } from "next/cache";
 
 const feedbacksCollection = connect("feedbacks");
 
@@ -19,8 +20,8 @@ export async function GET(request, { params }) {
   }
 
   const query = { _id: new ObjectId(id) };
-
   const result = await feedbacksCollection.findOne(query);
+  revalidatePath("/feedbacks");
 
   return Response.json(result);
 }
@@ -42,6 +43,7 @@ export async function DELETE(request, { params }) {
 
   const query = { _id: new ObjectId(id) };
   const result = await feedbacksCollection.deleteOne(query);
+  revalidatePath("/feedbacks");
 
   return Response.json(result);
 }
@@ -61,6 +63,7 @@ export async function PATCH(request, { params }) {
     },
   };
   const result = await feedbacksCollection.updateOne(query, update);
+  revalidatePath("/feedbacks");
 
   return Response.json(result);
 }
