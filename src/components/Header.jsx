@@ -24,6 +24,9 @@ export default function Header() {
             <Link href={"/reviews"} className="btn">
               Reviews
             </Link>
+            <Link href={"/feedbacks"} className="btn">
+              Feedbacks
+            </Link>
           </div>
         </div>
       </div>
