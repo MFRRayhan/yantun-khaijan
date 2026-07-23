@@ -1,5 +1,5 @@
 "use client";
-import { deleteFeedback } from "@/app/actions/feedbackActions";
+import { deleteFeedback } from "@/app/actions/server/feedbackActions";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 

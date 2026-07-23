@@ -2,7 +2,7 @@
 
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
-import { updateFeedback } from "@/app/actions/feedbackActions";
+import { updateFeedback } from "@/app/actions/server/feedbackActions";
 
 export default function UpdateFeedback({ feedback }) {
   const router = useRouter();
