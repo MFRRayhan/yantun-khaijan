@@ -1,15 +1,19 @@
-import { connect } from "@/app/lib/dbConnect";
+import { connect } from "@/lib/dbConnect";
 import FeedbackForm from "@/components/FeedbackForm";
 
 export default function AddFeedback() {
   const postFeedback = async (formData) => {
     "use server";
 
-    const result = await connect("feedback").insertOne({
-      message,
+    const result = await connect("feedbacks").insertOne({
+      message: formData,
+      createdAt: new Date().toISOString(),
     });
 
-    return result;
+    return {
+      ...result,
+      insertedId: result.insertedId.toString(),
+    };
   };
 
   return (

@@ -1,4 +1,4 @@
-import { connect } from "@/app/lib/dbConnect";
+import { connect } from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 import { revalidatePath } from "next/cache";
 

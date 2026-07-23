@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
 export default function FeedbackForm({ postFeedback }) {
@@ -8,8 +8,7 @@ export default function FeedbackForm({ postFeedback }) {
   const handleFeedback = async (e) => {
     e.preventDefault();
     const message = e.target.message.value;
-
-    const data = postFeedback(message);
+    const data = await postFeedback(message);
 
     if (data.insertedId) {
       Swal.fire({
@@ -19,10 +18,10 @@ export default function FeedbackForm({ postFeedback }) {
         showConfirmButton: false,
         timer: 2000,
       });
-      router.push("/feedbacks");
     }
 
     e.target.reset();
+    router.push("/feedbacks");
   };
 
   return (

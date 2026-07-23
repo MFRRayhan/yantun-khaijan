@@ -1,6 +1,6 @@
 import FeedbackCard from "@/components/cards/FeedbackCard";
 import Link from "next/link";
-import { connect } from "../lib/dbConnect";
+import { connect } from "../../lib/dbConnect";
 
 export const metadata = {
   title: "Feedbacks",
