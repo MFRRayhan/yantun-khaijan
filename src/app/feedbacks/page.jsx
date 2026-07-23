@@ -1,5 +1,6 @@
 import FeedbackCard from "@/components/cards/FeedbackCard";
 import Link from "next/link";
+import { connect } from "../lib/dbConnect";
 
 export const metadata = {
   title: "Feedbacks",
@@ -7,18 +8,23 @@ export const metadata = {
 
 export const dynamic = "force-dynamic";
 
-const getFeedbacks = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/feedbacks`, {
-    // cache: "force-cache",
-    next: { revalidate: 60 },
-  });
-  const data = await res.json();
+// const getFeedbacks = async () => {
+//   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER}/api/feedbacks`, {
+//     // cache: "force-cache",
+//     next: { revalidate: 60 },
+//   });
+//   const data = await res.json();
 
-  return data;
-};
+//   return data;
+// };
 
 export default async function Feedbacks() {
-  const feedbacks = await getFeedbacks();
+  // const feedbacks = await getFeedbacks();
+  const feedbacks = await connect("feedbacks").find().toArray();
+  const serializedFeedbacks = feedbacks.map((feedback) => ({
+    ...feedback,
+    _id: feedback._id.toString(),
+  }));
 
   return (
     <div className="space-y-6">
@@ -34,8 +40,8 @@ export default async function Feedbacks() {
       </div>
 
       <div className="grid grid-cols-4 gap-6">
-        {feedbacks.map((feedback) => (
-          <FeedbackCard key={feedback._id} feedback={feedback} />
+        {serializedFeedbacks.map((feedback) => (
+          <FeedbackCard key={feedback._id.toString()} feedback={feedback} />
         ))}
       </div>
     </div>
