@@ -1,6 +1,17 @@
+import { connect } from "@/app/lib/dbConnect";
 import FeedbackForm from "@/components/FeedbackForm";
 
 export default function AddFeedback() {
+  const postFeedback = async (formData) => {
+    "use server";
+
+    const result = await connect("feedback").insertOne({
+      message,
+    });
+
+    return result;
+  };
+
   return (
     <section className="flex min-h-[80vh] items-center justify-center px-4 py-10">
       <div className="w-full max-w-2xl rounded-2xl border border-stone-700 bg-stone-900 p-8 shadow-xl">
@@ -12,7 +23,7 @@ export default function AddFeedback() {
           </p>
         </div>
 
-        <FeedbackForm />
+        <FeedbackForm postFeedback={postFeedback} />
       </div>
     </section>
   );

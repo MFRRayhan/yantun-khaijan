@@ -11,7 +11,7 @@ export default function FeedbackCard({ feedback }) {
       </p>
       <div className="flex items-center gap-2 mt-auto">
         <button className="btn bg-amber-300!">Update</button>
-        <DeleteFeedback />
+        <DeleteFeedback feedback={feedback} />
       </div>
     </div>
   );

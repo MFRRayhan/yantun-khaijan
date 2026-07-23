@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
-export default function DeleteFeedback() {
+export default function DeleteFeedback({ feedback }) {
   const router = useRouter();
 
   const handleDelete = async (id) => {

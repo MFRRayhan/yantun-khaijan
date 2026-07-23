@@ -3,25 +3,13 @@
 import { redirect, useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
-export default function FeedbackForm() {
+export default function FeedbackForm({ postFeedback }) {
   const router = useRouter();
   const handleFeedback = async (e) => {
     e.preventDefault();
     const message = e.target.message.value;
 
-    const newFeedback = {
-      message,
-    };
-
-    const res = await fetch("/api/feedbacks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newFeedback),
-    });
-
-    const data = await res.json();
+    const data = postFeedback(message);
 
     if (data.insertedId) {
       Swal.fire({
