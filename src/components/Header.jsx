@@ -28,9 +28,6 @@ export default function Header() {
             <Link href={"/feedbacks"} className="btn">
               Feedbacks
             </Link>
-            <Link href={"/practice"} className="btn">
-              Practice
-            </Link>
           </div>
         </div>
       </div>

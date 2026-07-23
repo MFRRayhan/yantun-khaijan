@@ -1,4 +1,5 @@
 "use client";
+import { deleteFeedback } from "@/app/actions/feedbackActions";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 
@@ -19,11 +20,13 @@ export default function DeleteFeedback({ feedback }) {
     if (!result.isConfirmed) return;
 
     try {
-      const res = await fetch(`/api/feedbacks/${id}`, {
-        method: "DELETE",
-      });
+      // const res = await fetch(`/api/feedbacks/${id}`, {
+      //   method: "DELETE",
+      // });
 
-      const data = await res.json();
+      // const data = await res.json();
+
+      const data = await deleteFeedback(id);
 
       if (data.deletedCount > 0) {
         Swal.fire({
